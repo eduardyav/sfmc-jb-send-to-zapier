@@ -15,11 +15,11 @@
     "arguments": {
         "execute": {
             "inArguments": [
-                { "firstName":"{{Contact.Attribute.TEST_CUSTOM_EVENT_DE.FirstName}}" },
-                { "lastName":"{{Contact.Attribute.TEST_CUSTOM_EVENT_DE.LastName}}" },
-                { "emailAddress": "{{Contact.Attribute.TEST_CUSTOM_EVENT_DE.EmailAddress}}" },
-                { "id":"{{Contact.Attribute.TEST_CUSTOM_EVENT_DE.ID}}" },
-                { "phone":"{{Contact.Attribute.TEST_CUSTOM_EVENT_DE.Phone}}" }
+                { "FirstName":"{{Contact.Attribute.TEST_CUSTOM_EVENT_DE.FirstName}}" },
+                { "LastName":"{{Contact.Attribute.TEST_CUSTOM_EVENT_DE.LastName}}" },
+                { "EmailAddress": "{{Contact.Attribute.TEST_CUSTOM_EVENT_DE.EmailAddress}}" },
+                { "ID":"{{Contact.Attribute.TEST_CUSTOM_EVENT_DE.ID}}" },
+                { "Phone":"{{Contact.Attribute.TEST_CUSTOM_EVENT_DE.Phone}}" }
             ],
             "outArguments": [
             ],
