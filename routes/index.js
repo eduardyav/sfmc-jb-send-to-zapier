@@ -1,7 +1,7 @@
 'use strict';
 
 // Deps
-var activity = require('./sendToZapierActivity');
+var activity = require('./activity');
 
 /*
  * GET home page.
@@ -10,11 +10,11 @@ exports.index = function(req, res){
     if( !req.session.token ) {
         res.render( 'index', {
             title: 'Unauthenticated',
-            errorMessage: 'This app may only be loaded via the Salesforce Marketing Cloud',
+            errorMessage: 'This app may only be loaded via the ExactTarget Marketing Cloud',
         });
     } else {
         res.render( 'index', {
-            title: 'Custom Interaction',
+            title: 'Hello World Custom Interaction Example',
             results: activity.logExecuteData,
         });
     }

@@ -1,22 +1,20 @@
 {
-    "name": "sendToZapier",
-    "version": "1.0.0",
-    "description": "This is a package contining a custom activity for Journey Builder",
-    "private": true,
-    "license": "UNLICENSED",
-    "main": "app.js",
-    "scripts": {
-        "start": "node app.js"
-    },
-    "dependencies": {
-        "express": "~4.15.3",
-        "jade": "*",
-        "fuel": "~0.5.0",
-        "require": "~0.5.0",
-        "jwt-simple": "~0.5.0",
-        "request": "2.81.0"
-    },
-    "engines": {
-        "node": "~8.2.0"
-    }
+  "name": "helloWorldTwo",
+  "version": "0.0.3",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "~3.5.0",
+    "jade": "*",
+    "fuel": "~0.4.1",
+    "require": "~0.5.0",
+    "jwt-simple": "~0.1.0",
+    "request": "~2.33.0"
+  },
+  "engines": {
+    "node": "8.2.0"
+  },
+  "license": "BSD-3-Clause"
 }

@@ -7,8 +7,7 @@ var JWT         = require('./lib/jwtDecoder');
 var path        = require('path');
 var request     = require('request');
 var routes      = require('./routes');
-var activity    = require('./routes/sendToZapierActivity');
-var pkgjson = require( './package.json' );
+var activity    = require('./routes/activity');
 
 var app = express();
 
@@ -43,7 +42,7 @@ function tokenFromJWT( req, res, next ) {
 app.use(express.cookieParser());
 
 // TODO: MaxAge for cookie based on token exp?
-app.use(express.cookieSession({secret: "SendToZapier-CookieSecret"}));
+app.use(express.cookieSession({secret: "HelloWorld-CookieSecret"}));
 
 // Configure Express
 app.set('port', process.env.PORT || 3000);
@@ -67,11 +66,47 @@ app.get('/', routes.index );
 app.post('/login', tokenFromJWT, routes.login );
 app.post('/logout', routes.logout );
 
-// Custom Activity Routes
-app.post('/jb/activities/send-to-zapier/save/', activity.save );
-app.post('/jb/activities/send-to-zapier/validate/', activity.validate );
-app.post('/jb/activities/send-to-zapier/publish/', activity.publish );
-app.post('/jb/activities/send-to-zapier/execute/', activity.execute );
+// Custom Hello World Activity Routes
+app.post('/ixn/activities/hello-world/save/', activity.save );
+app.post('/ixn/activities/hello-world/validate/', activity.validate );
+app.post('/ixn/activities/hello-world/publish/', activity.publish );
+app.post('/ixn/activities/hello-world/execute/', activity.execute );
+
+
+// Abstract Event Handler
+app.post('/fireEvent/:type', function( req, res ) {
+    var data = req.body;
+    var triggerIdFromAppExtensionInAppCenter = '__insert_your_trigger_key_here__';
+    var JB_EVENT_API = 'https://www.exacttargetapis.com/interaction-experimental/v1/events';
+    var reqOpts = {};
+
+    if( 'helloWorld' !== req.params.type ) {
+        res.send( 400, 'Unknown route param: "' + req.params.type +'"' );
+    } else {
+        // Hydrate the request
+        reqOpts = {
+            url: JB_EVENT_API,
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + req.session.token
+            },
+            body: JSON.stringify({
+                ContactKey: data.alternativeEmail,
+                EventDefinitionKey: triggerIdFromAppExtensionInAppCenter,
+                Data: data
+            })
+        };
+
+        request( reqOpts, function( error, response, body ) {
+            if( error ) {
+                console.error( 'ERROR: ', error );
+                res.send( response, 400, error );
+            } else {
+                res.send( body, 200, response);
+            }
+        }.bind( this ) );
+    }
+});
 
 app.get('/clearList', function( req, res ) {
 	// The client makes this request to get the data
@@ -89,13 +124,6 @@ app.get('/getActivityData', function( req, res ) {
 		res.send( 200, {data: activity.logExecuteData} );
 	}
 });
-
-app.get( '/version', function( req, res ) {
-	res.setHeader( 'content-type', 'application/json' );
-	res.send(200, JSON.stringify( {
-		version: pkgjson.version
-	} ) );
-} );
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
