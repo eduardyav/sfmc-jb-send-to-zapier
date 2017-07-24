@@ -17,15 +17,6 @@ define( function( require ) {
 	// This listens for Journey Builder to send tokens
 	// Parameter is either the tokens data or an object with an
 	// "error" property containing the error message
-	connection.on('getTokens', function( data ) {
-		if( data.error ) {
-			console.error( data.error );
-		} else {
-			tokens = data;
-		}
-        console.log('tokens', tokens);
-	});
-    
     connection.on('requestedTokens', function( data ) {
 		if( data.error ) {
 			console.error( data.error );
@@ -35,17 +26,16 @@ define( function( require ) {
         console.log('tokens', tokens);
 	});
     
-    
-
 	// This listens for Journey Builder to send endpoints
 	// Parameter is either the endpoints data or an object with an
 	// "error" property containing the error message
-	connection.on('getEndpoints', function( data ) {
+	connection.on('requestedEndpoints', function( data ) {
 		if( data.error ) {
 			console.error( data.error );
 		} else {
 			endpoints = data;
 		}
+        console.log('endpoints', endpoints);
 	});
 
     connection.on('requestPayload', function() {
