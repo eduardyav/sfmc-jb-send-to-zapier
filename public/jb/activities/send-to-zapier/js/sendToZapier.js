@@ -7,11 +7,13 @@ define( function( require ) {
 	var tokens;
 	var endpoints;
     
-    $(window).ready(function() {
+    $(window).ready(onRender);
+    
+    function onRender() {
         connection.trigger('ready');
-		connection.trigger('requestTokens');
-		connection.trigger('requestEndpoints');
-    });
+        connection.trigger('requestTokens');
+        connection.trigger('requestEndpoints');
+    };
     
     connection.on('initActivity', function(payload) {
         if (payload) {
@@ -19,7 +21,6 @@ define( function( require ) {
             console.log('payload', payload);
         }
     });
-    
 
 	// This listens for Journey Builder to send tokens
 	// Parameter is either the tokens data or an object with an
