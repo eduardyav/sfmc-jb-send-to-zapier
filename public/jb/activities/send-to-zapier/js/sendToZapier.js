@@ -44,6 +44,8 @@ define( function( require ) {
 		//TODO: Shouldn't this come from the data?
         payload.flowDisplayName = 'Send To Zapier';
  
+        payload.metaData.isConfigured = true;
+ 
         connection.trigger('getPayload', payload);
     });
 
@@ -51,7 +53,6 @@ define( function( require ) {
 	// sends the "ready" method. JB parses the serialized object which
 	// consists of the Event Data and passes it to the
 	// "config.js.save.uri" as a POST
-    connection.on('populateFields', function(payload) {
-    });
+    connection.on('populateFields', function(payload) {});
 
 });
