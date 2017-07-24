@@ -50,7 +50,7 @@ define([], function(){
         },
 
         "edit": {
-            "uri": "https://zapier-jb-test.herokuapp.com/jb/activities/send-to-zapier/hello-world/",
+            "uri": "https://zapier-jb-test.herokuapp.com/jb/activities/send-to-zapier/",
             "height": 400,
             "width": 500
         }
