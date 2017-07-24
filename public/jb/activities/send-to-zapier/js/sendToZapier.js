@@ -6,6 +6,8 @@ define( function( require ) {
 	var tokens;
 	var endpoints;
 
+    console.log('Testing');
+    
     $(window).ready(function() {
         connection.trigger('ready');
 		connection.trigger('requestedTokens');
