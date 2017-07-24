@@ -7,7 +7,7 @@ requirejs.config({
         'vendor/jquery.min': {
             exports: '$'
         },
-		'CreateCase': {
+		'sendToZapier': {
 			deps: ['vendor/jquery.min', 'vendor/postmonger']
 		}
     }

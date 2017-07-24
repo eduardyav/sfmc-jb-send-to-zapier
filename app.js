@@ -8,6 +8,7 @@ var path        = require('path');
 var request     = require('request');
 var routes      = require('./routes');
 var activity    = require('./routes/sendToZapierActivity');
+var pkgjson = require( './package.json' );
 
 var app = express();
 
@@ -88,6 +89,13 @@ app.get('/getActivityData', function( req, res ) {
 		res.send( 200, {data: activity.logExecuteData} );
 	}
 });
+
+app.get( '/version', function( req, res ) {
+	res.setHeader( 'content-type', 'application/json' );
+	res.send(200, JSON.stringify( {
+		version: pkgjson.version
+	} ) );
+} );
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
