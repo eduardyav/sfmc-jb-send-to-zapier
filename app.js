@@ -66,7 +66,7 @@ app.get('/', routes.index );
 app.post('/login', tokenFromJWT, routes.login );
 app.post('/logout', routes.logout );
 
-// Custom Hello World Activity Routes
+// Custom Activity Routes
 app.post('/jb/activities/send-to-zapier/save/', activity.save );
 app.post('/jb/activities/send-to-zapier/validate/', activity.validate );
 app.post('/jb/activities/send-to-zapier/publish/', activity.publish );
