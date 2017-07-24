@@ -8,8 +8,8 @@ define( function( require ) {
 
     $(window).ready(function() {
         connection.trigger('ready');
-		connection.trigger('requestTokens');
-		connection.trigger('requestEndpoints');
+		connection.trigger('requestedTokens');
+		connection.trigger('requestedEndpoints');
     })
 
 	// This listens for Journey Builder to send tokens
