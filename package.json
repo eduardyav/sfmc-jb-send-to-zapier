@@ -1,6 +1,7 @@
 {
-  "name": "helloWorldTwo",
-  "version": "0.0.3",
+  "name": "sendToZapier",
+  "version": "1.0.0",
+  "description": "This is a package containing a custom activity for Journey Builder",
   "private": true,
   "scripts": {
     "start": "node app.js"
