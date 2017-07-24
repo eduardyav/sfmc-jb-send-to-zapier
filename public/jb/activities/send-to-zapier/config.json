@@ -34,11 +34,15 @@
     },
     "configurationArguments": {
        "applicationExtensionKey": "D4F3B97E-1E12-405E-A9EC170BB6F94A46",
-       "save": {},
-       "publish": {
+        "save": {
+            "url": "https://hooks.zapier.com/hooks/catch/1394115/5st452/save/"
+        },
+        "publish": {
            "url": "https://hooks.zapier.com/hooks/catch/1394115/5st452/publish/"
-       },
-       "validate": {}
+        },
+        "validate": {
+            "url": "https://hooks.zapier.com/hooks/catch/1394115/5st452/validate/"
+        }
     },
     "edit": {
         "url": "https://zapier-jb-test.herokuapp.com/jb/activities/send-to-zapier",
