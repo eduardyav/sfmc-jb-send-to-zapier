@@ -44,6 +44,11 @@
            "url": "https://hooks.zapier.com/hooks/catch/1394115/5st452/validate/"
        }
     },
+    "edit": {
+        "url": "https://hooks.zapier.com/hooks/catch/1394115/5st452/",
+        "height": 400,
+        "width": 500
+    },
     "userInterfaces": {
         "configModal": {
             "height": 200,
