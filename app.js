@@ -42,7 +42,7 @@ function tokenFromJWT( req, res, next ) {
 app.use(express.cookieParser());
 
 // TODO: MaxAge for cookie based on token exp?
-app.use(express.cookieSession({secret: "HelloWorld-CookieSecret"}));
+app.use(express.cookieSession({secret: "SendToZapier-CookieSecret"}));
 
 // Configure Express
 app.set('port', process.env.PORT || 3000);
@@ -67,10 +67,10 @@ app.post('/login', tokenFromJWT, routes.login );
 app.post('/logout', routes.logout );
 
 // Custom Hello World Activity Routes
-app.post('/ixn/activities/hello-world/save/', activity.save );
-app.post('/ixn/activities/hello-world/validate/', activity.validate );
-app.post('/ixn/activities/hello-world/publish/', activity.publish );
-app.post('/ixn/activities/hello-world/execute/', activity.execute );
+app.post('/jb/activities/send-to-zapier/save/', activity.save );
+app.post('/jb/activities/send-to-zapier/validate/', activity.validate );
+app.post('/jb/activities/send-to-zapier/publish/', activity.publish );
+app.post('/jb/activities/send-to-zapier/execute/', activity.execute );
 
 
 // Abstract Event Handler

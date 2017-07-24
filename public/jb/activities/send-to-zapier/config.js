@@ -1,20 +1,21 @@
 define([], function(){      
     return {
-        "icon": "images/jb-icon.jpg",
-        "iconSmall": "images/jb-icon.jpg", 
+        "workflowApiVersion": "1.1",
+        "icon": "images/icon.png",
+        "iconSmall": "images/iconSmall.png", 
         "key": "D4F3B97E-1E12-405E-A9EC170BB6F94A46",
         "partnerApiObjectTypeId": "IXN.CustomActivity.REST",
         "lang": {
             "en-US": {        
-                "name": "Hello World Activity 2",
-                "description": "Activity simply posts the data into an array for display on the App's home page."
+                "name": "Send To Zapier",
+                "description": "Activity posts the data into the Zapier endpoint."
             }
         },
         "category": "messaging",
         "version": "1.0",
         "apiVersion": "1.0",
-       "execute": {
-            "uri": "https://myfirstappforjb.herokuapp.com/ixn/activities/hello-world/execute/",
+        "execute": {
+            "uri": "https://zapier-jb-test.herokuapp.com/jb/activities/send-to-zapier/execute/",
 			"inArguments": [],
 			"outArguments": [],
             "verb": "POST",
@@ -24,7 +25,7 @@ define([], function(){
             "timeout": 3000
 		},
         "save": {
-            "uri": "https://myfirstappforjb.herokuapp.com/ixn/activities/hello-world/save/",
+            "uri": "https://zapier-jb-test.herokuapp.com/jb/activities/send-to-zapier/save/",
 			"verb": "POST",
 			"body": "",
             "format": "json",
@@ -32,7 +33,7 @@ define([], function(){
             "timeout": 3000
         },
         "publish": {
-            "uri": "https://myfirstappforjb.herokuapp.com/ixn/activities/hello-world/publish/",
+            "uri": "https://zapier-jb-test.herokuapp.com/jb/activities/send-to-zapier/publish/",
             "verb": "POST",
 			"body": "",
             "format": "json",
@@ -40,7 +41,7 @@ define([], function(){
             "timeout": 3000
         },
         "validate": {
-            "uri": "https://myfirstappforjb.herokuapp.com/ixn/activities/hello-world/validate/",
+            "uri": "https://zapier-jb-test.herokuapp.com/jb/activities/send-to-zapier/validate/",
             "verb": "POST",
 			"body": "",
             "format": "json",
@@ -49,7 +50,7 @@ define([], function(){
         },
 
         "edit": {
-            "uri": "https://myfirstappforjb.herokuapp.com/ixn/activities/hello-world/",
+            "uri": "https://zapier-jb-test.herokuapp.com/jb/activities/send-to-zapier/hello-world/",
             "height": 400,
             "width": 500
         }

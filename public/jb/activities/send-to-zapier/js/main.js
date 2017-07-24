@@ -7,13 +7,13 @@ requirejs.config({
         'vendor/jquery.min': {
             exports: '$'
         },
-		'HelloWorld': {
+		'sendToZapier': {
 			deps: ['vendor/jquery.min', 'vendor/postmonger']
 		}
     }
 });
 
-requirejs( ['vendor/jquery.min', 'HelloWorld'], function( $, HelloWorld ) {
+requirejs( ['vendor/jquery.min', 'sendToZapier'], function( $, sendToZapier ) {
 	//console.log( 'REQUIRE LOADED' );
 });
 
