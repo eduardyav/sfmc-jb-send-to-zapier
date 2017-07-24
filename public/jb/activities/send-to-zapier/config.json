@@ -3,7 +3,8 @@
     "metaData": {
         "icon": "images/icon.png",
         "iconSmall": "images/iconSmall.png",
-        "category": "customer"
+        "category": "customer",
+        "isConfigured": true
     },
     "type": "REST",
     "lang": {
