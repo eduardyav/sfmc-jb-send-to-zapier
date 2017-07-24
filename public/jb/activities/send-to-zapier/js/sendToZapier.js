@@ -10,8 +10,8 @@ define( function( require ) {
     
     $(window).ready(function() {
         connection.trigger('ready');
-		connection.trigger('requestedTokens');
-		connection.trigger('requestedEndpoints');
+		connection.trigger('requestTokens');
+		connection.trigger('requestEndpoints');
     })
 
 	// This listens for Journey Builder to send tokens
@@ -25,6 +25,17 @@ define( function( require ) {
 		}
         console.log('tokens', tokens);
 	});
+    
+    connection.on('requestedTokens', function( data ) {
+		if( data.error ) {
+			console.error( data.error );
+		} else {
+			tokens = data;
+		}
+        console.log('tokens', tokens);
+	});
+    
+    
 
 	// This listens for Journey Builder to send endpoints
 	// Parameter is either the endpoints data or an object with an
