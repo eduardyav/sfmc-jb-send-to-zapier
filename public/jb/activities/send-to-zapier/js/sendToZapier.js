@@ -18,9 +18,10 @@ define( function( require ) {
     connection.on('initActivity', function(payload) {
         if (payload) {
             toJbPayload = payload;
-            console.log('payload', payload);
+            console.log('payload', toJbPayload);
         }
     });
+    
 
 	// This listens for Journey Builder to send tokens
 	// Parameter is either the tokens data or an object with an
@@ -46,6 +47,22 @@ define( function( require ) {
         console.log('endpoints', endpoints);
 	});
 
+    connection.on('clickedNext', function() {
+        save();
+        connection.trigger('ready');
+    });
+    
+    function save() {
+        toJbPayload.metaData.isConfigured = true;
+        connection.trigger('updateActivity', toJbPayload);
+    };
+    
+    connection.on('updateActivity', function(payload) {
+            console.log('updated payload', payload);
+    });
+
+    
+    
     connection.on('requestPayload', function() {
 	 var payload = {};
  
