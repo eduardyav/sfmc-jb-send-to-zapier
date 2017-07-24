@@ -3,17 +3,24 @@ define( function( require ) {
 	var $ = require( 'vendor/jquery.min' );
 
     var connection = new Postmonger.Session();
+    var toJbPayload = {};
 	var tokens;
 	var endpoints;
-
-    console.log('Testing');
     
     $(window).ready(function() {
         connection.trigger('ready');
 		connection.trigger('requestTokens');
 		connection.trigger('requestEndpoints');
-    }) 
+    });
     
+    connection.on('initActivity', function(payload) {
+        if (payload) {
+            toJbPayload = payload;
+            console.log('payload', payload);
+        }
+    });
+    
+
 	// This listens for Journey Builder to send tokens
 	// Parameter is either the tokens data or an object with an
 	// "error" property containing the error message
