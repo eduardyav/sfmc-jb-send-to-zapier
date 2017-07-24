@@ -12,17 +12,7 @@ define( function( require ) {
         connection.trigger('ready');
 		connection.trigger('requestTokens');
 		connection.trigger('requestEndpoints');
-    })
-
-    connection.on('ready', function( data ) {
-		if( data.error ) {
-			console.error( data.error );
-		} else {
-			console.log('data on ready', data);
-		}
-	});
-    
-    
+    }) 
     
 	// This listens for Journey Builder to send tokens
 	// Parameter is either the tokens data or an object with an
@@ -51,16 +41,17 @@ define( function( require ) {
     connection.on('requestPayload', function() {
 	 var payload = {};
  
-        payload.options = {
-           
-        };
+        payload.options = {};
 
 		//TODO: Shouldn't this come from the data?
         payload.flowDisplayName = 'Send To Zapier';
  
         payload.metaData.isConfigured = true;
  
+        console.log('payload', payload);
+        
         connection.trigger('getPayload', payload);
+        
     });
 
 	// Journey Builder broadcasts this event to us after this module
