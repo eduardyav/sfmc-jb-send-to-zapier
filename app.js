@@ -72,48 +72,11 @@ app.post('/jb/activities/send-to-zapier/validate/', activity.validate );
 app.post('/jb/activities/send-to-zapier/publish/', activity.publish );
 app.post('/jb/activities/send-to-zapier/execute/', activity.execute );
 
-
-// Abstract Event Handler
-app.post('/fireEvent/:type', function( req, res ) {
-    var data = req.body;
-    var triggerIdFromAppExtensionInAppCenter = '__insert_your_trigger_key_here__';
-    var JB_EVENT_API = 'https://www.exacttargetapis.com/interaction-experimental/v1/events';
-    var reqOpts = {};
-
-    if( 'helloWorld' !== req.params.type ) {
-        res.send( 400, 'Unknown route param: "' + req.params.type +'"' );
-    } else {
-        // Hydrate the request
-        reqOpts = {
-            url: JB_EVENT_API,
-            method: 'POST',
-            headers: {
-                'Authorization': 'Bearer ' + req.session.token
-            },
-            body: JSON.stringify({
-                ContactKey: data.alternativeEmail,
-                EventDefinitionKey: triggerIdFromAppExtensionInAppCenter,
-                Data: data
-            })
-        };
-
-        request( reqOpts, function( error, response, body ) {
-            if( error ) {
-                console.error( 'ERROR: ', error );
-                res.send( response, 400, error );
-            } else {
-                res.send( body, 200, response);
-            }
-        }.bind( this ) );
-    }
-});
-
 app.get('/clearList', function( req, res ) {
 	// The client makes this request to get the data
 	activity.logExecuteData = [];
 	res.send( 200 );
 });
-
 
 // Used to populate events which have reached the activity in the interaction we created
 app.get('/getActivityData', function( req, res ) {
