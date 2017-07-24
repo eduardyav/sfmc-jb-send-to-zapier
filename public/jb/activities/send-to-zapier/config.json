@@ -45,7 +45,7 @@
        }
     },
     "edit": {
-        "url": "https://hooks.zapier.com/hooks/catch/1394115/5st452/",
+        "url": "https://zapier-jb-test.herokuapp.com/jb/activities/send-to-zapier",
         "height": 400,
         "width": 500
     },
