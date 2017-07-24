@@ -23,6 +23,7 @@ define( function( require ) {
 		} else {
 			tokens = data;
 		}
+        console.log('tokens', tokens);
 	});
 
 	// This listens for Journey Builder to send endpoints
