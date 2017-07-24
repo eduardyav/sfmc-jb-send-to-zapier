@@ -14,6 +14,16 @@ define( function( require ) {
 		connection.trigger('requestEndpoints');
     })
 
+    connection.on('ready', function( data ) {
+		if( data.error ) {
+			console.error( data.error );
+		} else {
+			console.log('data on ready', data);
+		}
+	});
+    
+    
+    
 	// This listens for Journey Builder to send tokens
 	// Parameter is either the tokens data or an object with an
 	// "error" property containing the error message
