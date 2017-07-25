@@ -92,9 +92,10 @@ exports.execute = function( req, res ) {
     //console.log( req.body );
     logData( req );
     res.send( 200, 'Execute' );
-    webhookUrl = 'https://hooks.zapier.com/hooks/catch/1394115/5st452/';
-    data = { "FirstName": "Piotr", "LastName": "Caputa", "EmailAddress": "piotr.caputa@spotcap.com", "ID": "customevent", "Phone": "15780270989" };
-    headers = {'User-Agent': 'sfmc-activity-zapier'};
+    console.log( "exports.execute");
+    var webhookUrl = "https://hooks.zapier.com/hooks/catch/1394115/5st452/";
+    var data = { "FirstName": "Piotr", "LastName": "Caputa", "EmailAddress": "piotr.caputa@spotcap.com", "ID": "customevent", "Phone": "15780270989" };
+    var headers = {'User-Agent': 'sfmc-activity-zapier'};
     console.log( "making POST request: ");
     executeHttpRequest(webhookUrl, "POST", headers, data, "json");
     console.log( "making POST request done: ");
