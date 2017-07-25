@@ -16,7 +16,7 @@
     "arguments": {
         "execute": {
             "inArguments": [
-                { "FirstName":"{{Event.7EE860B1-0FB8-4CEC-9CCF-2C67BE28BF8D.FirstName}}" },
+                { "FirstName":"{{Event.TEST_CUSTOM_EVENT_DE.FirstName}}" },
                 { "LastName":"{{Contact.Attribute.TEST_CUSTOM_EVENT_DE.LastName}}" },
                 { "EmailAddress": "{{Contact.Attribute.TEST_CUSTOM_EVENT_DE.EmailAddress}}" },
                 { "ID":"{{Contact.Attribute.TEST_CUSTOM_EVENT_DE.ID}}" },
