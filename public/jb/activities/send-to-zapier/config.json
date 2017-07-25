@@ -34,14 +34,27 @@
     },
     "configurationArguments": {
        "applicationExtensionKey": "D4F3B97E-1E12-405E-A9EC170BB6F94A46",
+       "defaults": { 
+            "method": "POST",
+            "format": "JSON" 
+        },
         "save": {
-            "url": "https://hooks.zapier.com/hooks/catch/1394115/5st452/save/"
+            "url": "https://hooks.zapier.com/hooks/catch/1394115/5st452/save/",
+            "body": "",
+            "verb": "POST",
+            "useJwt": false
         },
         "publish": {
-           "url": "https://hooks.zapier.com/hooks/catch/1394115/5st452/publish/"
+           "url": "https://hooks.zapier.com/hooks/catch/1394115/5st452/publish/",
+            "body": "",
+            "verb": "POST",
+            "useJwt": false
         },
         "validate": {
-            "url": "https://hooks.zapier.com/hooks/catch/1394115/5st452/validate/"
+            "url": "https://hooks.zapier.com/hooks/catch/1394115/5st452/validate/",
+            "body": "",
+            "verb": "POST",
+            "useJwt": false
         }
     },
     "edit": {
