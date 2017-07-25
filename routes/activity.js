@@ -105,7 +105,7 @@ function executeHttpRequest(url, method, headers, data, dataType) {
 		url: url,
 		method: method,
 		headers: headers,
-        json = data
+        json: data
 	};
     request(options, function (err, resp, body) {	
 		if(!err) {
