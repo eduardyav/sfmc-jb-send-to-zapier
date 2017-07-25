@@ -23,7 +23,7 @@
             ],
             "outArguments": [
             ],
-            "url": "https://hooks.zapier.com/hooks/catch/1394115/5st452/execute/",
+            "url": "https://zapier-jb-test.herokuapp.com/jb/activities/send-to-zapier/execute/",
             "verb": "POST",
             "body": "",
             "header": "",
@@ -39,19 +39,19 @@
             "format": "JSON" 
         },
         "save": {
-            "url": "https://hooks.zapier.com/hooks/catch/1394115/5st452/save/",
+            "url": "https://zapier-jb-test.herokuapp.com/jb/activities/send-to-zapier/save/",
             "body": "",
             "verb": "POST",
             "useJwt": false
         },
         "publish": {
-           "url": "https://hooks.zapier.com/hooks/catch/1394115/5st452/publish/",
+           "url": "https://zapier-jb-test.herokuapp.com/jb/activities/send-to-zapier/publish/",
             "body": "",
             "verb": "POST",
             "useJwt": false
         },
         "validate": {
-            "url": "https://hooks.zapier.com/hooks/catch/1394115/5st452/validate/",
+            "url": "https://zapier-jb-test.herokuapp.com/jb/activities/send-to-zapier/validate/",
             "body": "",
             "verb": "POST",
             "useJwt": false
