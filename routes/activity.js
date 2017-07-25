@@ -1,8 +1,7 @@
 'use strict';
-var util = require( 'util' );
 
-// Deps
 var util = require( 'util' );
+var request = require('request');
 
 exports.logExecuteData = [];
 
@@ -66,16 +65,6 @@ exports.save = function( req, res ) {
 };
 
 /*
- * POST Handler for /execute/ route of Activity.
- */
-exports.execute = function( req, res ) {
-    // Data from the req and put it in an array accessible to the main app.
-    //console.log( req.body );
-    logData( req );
-    res.send( 200, 'Execute' );
-};
-
-/*
  * POST Handler for /publish/ route of Activity.
  */
 exports.publish = function( req, res ) {
@@ -94,3 +83,40 @@ exports.validate = function( req, res ) {
     logData( req );
     res.send( 200, 'Validate' );
 };
+
+/*
+ * POST Handler for /execute/ route of Activity.
+ */
+exports.execute = function( req, res ) {
+    // Data from the req and put it in an array accessible to the main app.
+    //console.log( req.body );
+    logData( req );
+    res.send( 200, 'Execute' );
+    webhookUrl = 'https://hooks.zapier.com/hooks/catch/1394115/5st452/';
+    data = { "FirstName": "Piotr", "LastName": "Caputa", "EmailAddress": "piotr.caputa@spotcap.com", "ID": "customevent", "Phone": "15780270989" };
+    headers = {'User-Agent': 'sfmc-activity-zapier'};
+    executeHttpRequest(webhookUrl, "POST", headers, data, "json");
+};
+
+function executeHttpRequest(url, method, headers, data, dataType) {
+    var options = {
+		url: url,
+		method: method,
+		headers: headers,
+        json = data
+	};
+    request(options, function (err, resp, body) {	
+		if(!err) {
+			if(resp.statusCode === 200) {
+				callback(err, resp, body);
+			}
+			else {
+				callback(new Error('Invalid Status Code: ' + resp.statusCode));
+			}
+		}
+		else {
+			callback(err);
+		}
+	});
+}
+
