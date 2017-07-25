@@ -16,6 +16,7 @@
     "arguments": {
         "execute": {
             "inArguments": [
+                { "Contact.Key":"{{Contact.Key}}" },
                 { "FirstName":"{{Event.TEST_CUSTOM_EVENT_DE.FirstName}}" },
                 { "FirstName":"{{Event.TEST_CUSTOM_EVENT_AUTOMATION_STUDIO.TEST_CUSTOM_EVENT_DE.FirstName}}" },
                 { "FirstName":"{{Event.TEST_CUSTOM_EVENT_AUTOMATION_STUDIO.FirstName}}" },
