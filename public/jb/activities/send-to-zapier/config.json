@@ -18,6 +18,7 @@
             "inArguments": [
                 { "Contact.Key":"{{Contact.Key}}" },
                 { "FirstName":"{{Event.TEST_CUSTOM_EVENT_AUTOMATION_STUDIO.FirstName}}" },
+                { "FirstName":"{{Event.ContactEvent-72af1529-1d7d-821e-2a08-34fb5068561d.FirstName}}" },
                 { "FirstName":"Test" },
                 { "LastName":"{{Contact.Attribute.TEST_CUSTOM_EVENT_DE.LastName}}" },
                 { "EmailAddress": "{{Contact.Attribute.TEST_CUSTOM_EVENT_DE.EmailAddress}}" },
