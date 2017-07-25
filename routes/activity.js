@@ -111,14 +111,15 @@ function executeHttpRequest(url, method, headers, data, dataType) {
     request(options, function (err, resp, body) {	
 		if(!err) {
 			if(resp.statusCode === 200) {
-				callback(err, resp, body);
+				console.log( "request Ok");
 			}
 			else {
-				callback(new Error('Invalid Status Code: ' + resp.statusCode));
+                console.log( "request Invalid Status Code:"  + resp.statusCode);
+
 			}
 		}
 		else {
-			callback(err);
+			console.log( "request error" + err);
 		}
 	});
 }
