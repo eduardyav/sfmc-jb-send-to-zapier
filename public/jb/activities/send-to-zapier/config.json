@@ -16,14 +16,11 @@
     "arguments": {
         "execute": {
             "inArguments": [
-                { "Contact.Key":"{{Contact.Key}}" },
-                { "FirstName":"{{Event.TEST_CUSTOM_EVENT_AUTOMATION_STUDIO.FirstName}}" },
                 { "FirstName":"{{Event.ContactEvent-72af1529-1d7d-821e-2a08-34fb5068561d.FirstName}}" },
-                { "FirstName":"Test" },
-                { "LastName":"{{Contact.Attribute.TEST_CUSTOM_EVENT_DE.LastName}}" },
-                { "EmailAddress": "{{Contact.Attribute.TEST_CUSTOM_EVENT_DE.EmailAddress}}" },
-                { "ID":"{{Contact.Attribute.TEST_CUSTOM_EVENT_DE.ID}}" },
-                { "Phone":"{{Contact.Attribute.TEST_CUSTOM_EVENT_DE.Phone}}" }
+                { "LastName":"{{Event.ContactEvent-72af1529-1d7d-821e-2a08-34fb5068561d.LastName}}" },
+                { "EmailAddress": "{{Event.ContactEvent-72af1529-1d7d-821e-2a08-34fb5068561d.EmailAddress}}" },
+                { "ID":"{{Event.ContactEvent-72af1529-1d7d-821e-2a08-34fb5068561d.ID}}" },
+                { "Phone":"{{Event.ContactEvent-72af1529-1d7d-821e-2a08-34fb5068561d.Phone}}" }
             ],
             "outArguments": [
             ],
