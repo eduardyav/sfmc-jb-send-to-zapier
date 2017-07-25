@@ -91,7 +91,7 @@ exports.execute = function( req, res ) {
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
     logData( req );
-    res.send( 200, 'Execute' );
+    res.send( 200, 'Response to Execute' );
     var webhookUrl = "https://hooks.zapier.com/hooks/catch/1394115/5st452/";
     var data = { "FirstName": "Test", "LastName": "User", "EmailAddress": "test.user@spotcap.com", "ID": "customevent", "Phone": "15780270989" };
     var headers = {'User-Agent': 'sfmc-activity-zapier'};
