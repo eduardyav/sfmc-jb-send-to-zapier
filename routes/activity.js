@@ -97,7 +97,7 @@ exports.execute = function( req, res ) {
     
     var webhookUrl = "https://hooks.zapier.com/hooks/catch/1394115/5st452/";
     //var data = { "FirstName": "Test", "LastName": "User", "EmailAddress": "test.user@spotcap.com", "ID": "customevent", "Phone": "15780270989" };
-    var data = activity.inArguments[0];
+    var data = activity.inArguments;
     var headers = {'User-Agent': 'sfmc-activity-zapier'};
     console.log( "making POST request with body: " + JSON.stringify(data));
     //executeHttpRequest(webhookUrl, "POST", headers, data, "json");
