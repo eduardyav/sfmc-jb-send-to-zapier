@@ -31,7 +31,7 @@ define( function( require ) {
 			defaults = settings;
 		}
         console.log('defaults', defaults);
-        var eventKey = defaults.Email;
+        var eventKey = defaults.Email[0];
         console.log('EventKey', eventKey);
     });
 
