@@ -13,6 +13,7 @@ define( function( require ) {
         connection.trigger('ready');
         connection.trigger('requestTokens');
         connection.trigger('requestEndpoints');
+        connection.trigger('requestInteractionDefaults');
     };
     
     connection.on('initActivity', function(payload) {
@@ -22,6 +23,15 @@ define( function( require ) {
         }
     });
     
+    
+    connection.on('requestedInteractionDefaults', function(settings) { 
+        if( settings.error ) {
+			console.error( settings.error );
+		} else {
+			defaults = settings;
+		}
+        console.log('defaults', defaults);
+    });
 
 	// This listens for Journey Builder to send tokens
 	// Parameter is either the tokens data or an object with an
