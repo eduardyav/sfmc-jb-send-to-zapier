@@ -41,7 +41,7 @@ define( function( require ) {
     // Otherwise null
     function retrieveKey (string) {
         var pos1 = string.indexOf(".");
-        var pos2 = string.indexOf(".", pos1);
+        var pos2 = string.indexOf(".", (pos1 + 1) );
         var result = string.substring(pos1, (pos2 - 1) );
         return result;
     }
