@@ -99,7 +99,7 @@ exports.execute = function( req, res ) {
     //var data = { "FirstName": "Test", "LastName": "User", "EmailAddress": "test.user@spotcap.com", "ID": "customevent", "Phone": "15780270989" };
     var data = activity.inArguments[0];
     var headers = {'User-Agent': 'sfmc-activity-zapier'};
-    console.log( "making POST request with body: " + data);
+    console.log( "making POST request with body: " + JSON.stringify(data));
     //executeHttpRequest(webhookUrl, "POST", headers, data, "json");
     console.log( "making POST request done: ");
 };
