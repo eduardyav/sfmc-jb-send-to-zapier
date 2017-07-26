@@ -101,11 +101,19 @@ exports.execute = function( req, res ) {
     // Since activity.inArguments is of the format  [{"FirstName":"Foo1"},{"LastName":"Spam1"},{"EmailAddress":"foo1.spam@eggs.com"},{"ID":"customevent1"},{"Phone":"15780270981"}]
     // it must be one JSON string
     var data = {};
-    for(var key in activity.inArguments) data[key] = activity.inArguments[key];
+    
+    
+    //for(var key in activity.inArguments){} data[key] = activity.inArguments[key];
+    
+    for (var i = 0; i < activity.length; i++){
+        for(var key in activity[i]){
+            data[key] = activity[i][key];
+        }
+    }
 
     var headers = {'User-Agent': 'sfmc-activity-zapier'};
     console.log( "making POST request with body: " + JSON.stringify(data));
-    //executeHttpRequest(webhookUrl, "POST", headers, data, "json");
+    executeHttpRequest(webhookUrl, "POST", headers, data, "json");
     console.log( "making POST request done: ");
 };
 
