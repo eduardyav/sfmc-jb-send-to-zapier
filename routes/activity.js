@@ -94,27 +94,23 @@ exports.execute = function( req, res ) {
     res.send( 200, 'Response to Execute' );
     
     var activity = req.body;
-    
-    var webhookUrl = "https://hooks.zapier.com/hooks/catch/1394115/5st452/";
-    //var data = { "FirstName": "Test", "LastName": "User", "EmailAddress": "test.user@spotcap.com", "ID": "customevent", "Phone": "15780270989" };
-    
+
     // Since activity.inArguments is of the format  [{"FirstName":"Foo1"},{"LastName":"Spam1"},{"EmailAddress":"foo1.spam@eggs.com"},{"ID":"customevent1"},{"Phone":"15780270981"}]
     // it must be one JSON string
+    var inArguments = activity.inArguments;
     var data = {};
-    
-    
-    //for(var key in activity.inArguments){} data[key] = activity.inArguments[key];
-    
-    for (var i = 0; i < activity.length; i++){
-        for(var key in activity[i]){
-            data[key] = activity[i][key];
+    for (var i = 0; i < inArguments.length; i++){
+        for(var key in inArguments[i]){
+            data[key] = inArguments[i][key];
         }
     }
-
+    //var data = { "FirstName": "Test", "LastName": "User", "EmailAddress": "test.user@spotcap.com", "ID": "customevent", "Phone": "15780270989" };
+    
     var headers = {'User-Agent': 'sfmc-activity-zapier'};
-    console.log( "making POST request with body: " + JSON.stringify(data));
+    var webhookUrl = "https://hooks.zapier.com/hooks/catch/1394115/5st452/";
+    console.log( "POST request to " + webhookUrl + " with body: " + JSON.stringify(data));
     executeHttpRequest(webhookUrl, "POST", headers, data, "json");
-    console.log( "making POST request done: ");
+    console.log( "Execute POST request done.");
 };
 
 function executeHttpRequest(url, method, headers, data, dataType) {
