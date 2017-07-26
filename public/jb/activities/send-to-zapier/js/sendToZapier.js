@@ -42,7 +42,7 @@ define( function( require ) {
     function retrieveKey (string) {
         var pos1 = string.indexOf(".");
         var pos2 = string.indexOf(".", (pos1 + 1) );
-        var result = string.substring(pos1, (pos2 - 1) );
+        var result = string.substring( (pos1 + 1) , pos2);
         return result;
     }
     
