@@ -6,6 +6,7 @@ define( function( require ) {
     var toJbPayload = {};
 	var tokens;
 	var endpoints;
+    var eventDefinitionKey;
     
     $(window).ready(onRender);
     
@@ -31,8 +32,8 @@ define( function( require ) {
 			defaults = settings;
 		}
         console.log('defaults', defaults);
-        var eventKey = retrieveKey(defaults.email[0]);
-        console.log('EventKey', eventKey);
+        eventDefinitionKey = retrieveKey(defaults.email[0]);
+        console.log('EventKey', eventDefinitionKey);
     });
     
     // Assume that the string of the format 
@@ -95,6 +96,13 @@ define( function( require ) {
         payload.flowDisplayName = 'Send To Zapier';
  
         payload.metaData.isConfigured = true;
+        payload['arguments'].execute.inArguments = [
+            { 'FirstName': '{{Event.' + eventDefinitionKey + '.\"FirstName\"}}' },
+            { 'LastName': '{{Event.' + eventDefinitionKey + '.\"LastName\"}}' },
+            { 'EmailAddress': '{{Event.' + eventDefinitionKey + '.\"EmailAddress\"}}' },
+            { 'ID': '{{Event.' + eventDefinitionKey + '.\"ID\"}}' },
+            { 'Phone': '{{Event.' + eventDefinitionKey + '.\"Phone\"}}' },
+        ];
  
         console.log('payload', payload);
         

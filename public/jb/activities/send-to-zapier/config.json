@@ -16,12 +16,6 @@
     "arguments": {
         "execute": {
             "inArguments": [
-                { "FirstName":"{{Event.ContactEvent-72af1529-1d7d-821e-2a08-34fb5068561d.FirstName}}" },
-                { "LastName":"{{Event.ContactEvent-72af1529-1d7d-821e-2a08-34fb5068561d.LastName}}" },
-                { "EmailAddress": "{{Event.ContactEvent-72af1529-1d7d-821e-2a08-34fb5068561d.EmailAddress}}" },
-                { "ID":"{{Event.ContactEvent-72af1529-1d7d-821e-2a08-34fb5068561d.ID}}" },
-                { "Phone":"{{Event.ContactEvent-72af1529-1d7d-821e-2a08-34fb5068561d.Phone}}" },
-                { "Context":"{{Context.VersionNumber}}" }
             ],
             "outArguments": [
             ],
