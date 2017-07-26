@@ -31,10 +31,21 @@ define( function( require ) {
 			defaults = settings;
 		}
         console.log('defaults', defaults);
-        var eventKey = defaults.email[0];
+        var eventKey = retrieveKey(defaults.email[0]);
         console.log('EventKey', eventKey);
     });
-
+    
+    // Assume that the string of the format 
+    // '{{Event.ContactEvent-72af1529-1d7d-821e-2a08-34fb5068561d."EmailAddress"}}'
+    // It will return 'ContactEvent-72af1529-1d7d-821e-2a08-34fb5068561d'
+    // Otherwise null
+    function retrieveKey (string) {
+        var pos1 = string.indexOf(".");
+        var pos2 = string.indexOf(".", pos1);
+        var result = string.substring(pos1, (pos2 - 1) );
+        return result;
+    }
+    
 	// This listens for Journey Builder to send tokens
 	// Parameter is either the tokens data or an object with an
 	// "error" property containing the error message
