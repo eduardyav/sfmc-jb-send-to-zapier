@@ -31,6 +31,8 @@ define( function( require ) {
 			defaults = settings;
 		}
         console.log('defaults', defaults);
+        var eventKey = defaults.Email;
+        console.log('EventKey', eventKey);
     });
 
 	// This listens for Journey Builder to send tokens
