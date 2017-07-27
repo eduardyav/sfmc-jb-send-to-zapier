@@ -97,7 +97,7 @@ define( function( require ) {
     
     function onClickedNext() {
         
-        onsole.log('onClickedNext');
+        console.log('onClickedNext');
         
         save();
         connection.trigger('ready');
@@ -105,7 +105,7 @@ define( function( require ) {
     
     function onUpdateActivity (payload) {
         
-        onsole.log('onUpdateActivity');
+        console.log('onUpdateActivity');
         
         console.log('Updated payload: ', JSON.stringify(payload));
     }
