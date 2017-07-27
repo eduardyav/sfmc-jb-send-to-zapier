@@ -30,7 +30,7 @@ define( function( require ) {
     // Helper functions
     function onRender() {
         
-        console.log('onRender');
+        //console.log('onRender');
         
         // JB will respond the first time 'ready' is called with 'initActivity'
         connection.trigger('ready');
@@ -44,11 +44,11 @@ define( function( require ) {
     
     function initialize (data) {
         
-        console.log('initialize');
+        //console.log('initialize');
         
         if (data) {
             toJbPayload = data;
-            console.log('Initialize payload: ', toJbPayload);
+            //console.log('Initialize payload: ', toJbPayload);
         }
     }
     
@@ -56,13 +56,13 @@ define( function( require ) {
 	// "error" property containing the error message
     function onGetTokens (data) {
         
-        console.log('onGetTokens');
+        //console.log('onGetTokens');
         
 		if( data.error ) {
-			console.error( data.error );
+			//console.error( data.error );
 		} else {
 			tokens = data;
-            console.log('Tokens: ', tokens);
+            //console.log('Tokens: ', tokens);
 		}
 	}
     
@@ -70,32 +70,32 @@ define( function( require ) {
 	// "error" property containing the error message    
     function onGetEndpoints (data) {
         
-        console.log('onGetEndpoints');
+        //console.log('onGetEndpoints');
         
 		if( data.error ) {
-			console.error( data.error );
+			//console.error( data.error );
 		} else {
 			endpoints = data;
-            console.log('Endpoints: ', endpoints);
+            //console.log('Endpoints: ', endpoints);
 		}
 	}
     
     function onGetInteractionDefaults(settings) {
         
-        console.log('onGetInteractionDefaults');
+        //console.log('onGetInteractionDefaults');
         
         if( settings.error ) {
-			console.error( settings.error );
+			//console.error( settings.error );
 		} else {
 			defaults = settings;
             eventDefinitionKey = retrieveKey(defaults.email[0]);
-            console.log('EventKey', eventDefinitionKey);
+            //console.log('EventKey', eventDefinitionKey);
         }
     }
     
     function onClickedNext() {
         
-        console.log('onClickedNext');
+        //console.log('onClickedNext');
         
         save();
         connection.trigger('ready');
@@ -120,7 +120,7 @@ define( function( require ) {
             { 'Phone': '{{Event.' + eventDefinitionKey + '.\"Phone\"}}' },
         ];
         
-        console.log('Updated payload: ', JSON.stringify(toJbPayload));
+        //console.log('Updated payload: ', JSON.stringify(toJbPayload));
         
         connection.trigger('updateActivity', toJbPayload);
     }
