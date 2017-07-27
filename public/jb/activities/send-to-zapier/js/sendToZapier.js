@@ -120,7 +120,7 @@ define( function( require ) {
             { 'Phone': '{{Event.' + eventDefinitionKey + '.\"Phone\"}}' },
         ];
         
-        console.log('Updated payload: ', toJbPayload);
+        console.log('Updated payload: ', JSON.stringify(toJbPayload));
         
         connection.trigger('updateActivity', toJbPayload);
     }
