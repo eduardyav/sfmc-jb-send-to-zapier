@@ -1,14 +1,12 @@
 define( function( require ) {
 	var Postmonger = require( 'postmonger' );
-	var $ = require( 'vendor/jquery.min' );
-
     var connection = new Postmonger.Session();
     var toJbPayload = {};
 	var tokens;
 	var endpoints;
     var eventDefinitionKey;
     
-    $(window).ready(onRender);
+    window.addEventListener('DOMContentLoaded', onRender);
     
     function onRender() {
         connection.trigger('ready');
@@ -23,8 +21,7 @@ define( function( require ) {
             console.log('payload', toJbPayload);
         }
     });
-    
-    
+
     connection.on('requestedInteractionDefaults', function(settings) { 
         if( settings.error ) {
 			console.error( settings.error );
@@ -95,29 +92,5 @@ define( function( require ) {
     connection.on('updateActivity', function(payload) {
             console.log('updated payload', payload);
     });
-
-    
-    
-    connection.on('requestPayload', function() {
-	 var payload = {};
- 
-        payload.options = {};
-
-		//TODO: Shouldn't this come from the data?
-        payload.flowDisplayName = 'Send To Zapier';
- 
-        payload.metaData.isConfigured = true;
- 
-        console.log('payload', payload);
-        
-        connection.trigger('getPayload', payload);
-        
-    });
-
-	// Journey Builder broadcasts this event to us after this module
-	// sends the "ready" method. JB parses the serialized object which
-	// consists of the Event Data and passes it to the
-	// "config.js.save.uri" as a POST
-    connection.on('populateFields', function(payload) {});
 
 });
