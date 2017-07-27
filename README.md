@@ -42,18 +42,18 @@
 
 #### Copying App Center Data
 
-1. Open config.js file in the 'config' folder
+1. Open config.json file in the 'config' folder
 
 2. Copy the values from the App Center into this file
 
 <code>
     <pre>
          {
-            appId           : '__insert_your_app_id__',
-            clientId        : '__insert_your_app_client_id__',
-            clientSecret    : '__insert_your_app_client_secret__',
-            appSignature    : '__insert_your_app_signature__',
-            authUrl         : 'https://auth.exacttargetapis.com/v1/requestToken?legacy=1'
+            "appId"           : "__insert_your_app_id__",
+            "clientId"        : "__insert_your_app_client_id__",
+            "clientSecret"    : "__insert_your_app_client_secret__",
+            "appSignature"    : "__insert_your_app_signature__",
+            "authUrl"         : "https://auth.exacttargetapis.com/v1/requestToken?legacy=1"
         };
     </pre>
 </code>
