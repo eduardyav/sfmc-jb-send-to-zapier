@@ -1,61 +1,50 @@
-# Journey Builder
-## Custom Interaction - Hello World
+# SFMC Journey Builder
+## Custom Activity - Send To Zapier
 
-**NOTE:** You won't be able to run this locally. It is intended to be ran on a publicly available web server/cloud only.
-
-**NOTE:** This app and the associated code is NOT production quality, its pure purpose is to demonstrate the full flow of custom interactions in Journey Builder
+**NOTE:** You will not be able to run this locally. It is intended to be ran on a publicly available web server/cloud only.
 
 ### Pre-Requisites
 
-* Node.js (to test locally)
-* Must have an ExactTarget Marketing Cloud account
+* A Salesforce Marketing Cloud account
 * Journey Builder and all associated applications  must be provisioned into this account
-* A publicly accessible web server or cloud (I'll be using [Heroku](https://heroku.com) with a single dyno and you can too, just sign up for a free account) You'll need the Heroku toolbelt if you're using that PaaS for this app.
-* Web Server or Cloud MUST support SSL (which is why we recommend Heroku...it just works for single dyno apps)
-* A valid Code@ account and associated App Center Developer Account (available from within Code@)
+* A publicly accessible web server or cloud
+* Web Server or Cloud MUST support SSL
+* A valid App Center Developer Account
 * Understanding of client-server communications, JavaScript, HTML(5), Node.js and Express
 
 ### How To Use
 
-#### Creating our base app in Code@
+#### Creating a base app in App Center
 
-1. clone this repository locally
-    git clone git@github.com:ExactTarget/journey-builder-custom-hello-world.git
+1. Login to your [App Center account] (https://appcenter-auth.s1.marketingcloudapps.com/)
 
-2. Login to your Code@ account [https://code.exacttarget.com/user/login](https://code.exacttarget.com/user/login)
+2. Select "Create New App"
 
-3. Select [App Center](https://code.exacttarget.com/appcenter) from the Code@ navigation. Register as a developer if you haven't already.
-
-4. Select "Create New App"
-
-5. Select "Marketing Cloud" as the template type and use the following properties:
+5. Select "Package" as the template type and use the following properties:
     
-    * App Type: HubExchange App
-    * App Category: Offline
-    * Name: Hello World
-    * Description: This is a hello world app
-    * Package: &lt;THIS MUST BE UNIQUE ACROSS ALL OF EXACTTARGET&gt; (I recommend something like johndoeJBCustomHelloWorldApp) where you replace johndoe with your first and last name
-    * Would you like to use an existing App ID: No
-    * IMH Icon: Not required
-    * Application Endpoints: The base is your publicly accessible web server's endpoint for this app, this can be updated later, MUST BE OVER SSL
-        * Login URL: https://endpoint.tld/login
-        * Logout URL: https://endpoint.tld/logout
-        * Redirect URL: https://endpoint.tld/
-    * Application Event Callbacks: Not required
+    * Category: HubExchange
+    * Name: <YOUR_APP_NAME>
+    * Description: <DESCRIBE_WHAT_APP_IS_DOING>
+    * Package: &lt;THIS MUST BE UNIQUE ACROSS ALL OF SFMC&gt
 
-6. Integrate your app with an account which will not be impacted by having an additional icon in the app switcher of the marketing cloud
+    * Application Endpoints: The base is your publicly accessible web server's endpoint for this app, this can be updated later, MUST BE OVER SSL
+        * Login URL: <YOUR_APP_ENDPOINT>/login
+        * Logout URL: <YOUR_APP_ENDPOINT>/logout
+        * Redirect URL: <YOUR_APP_ENDPOINT>/
+
+6. Integrate your app with an Account (Business Unit)
 
 7. Data Access: No (SSO Only)
 
-8. Make sure everything is correct, and finish.
+8. Make sure everything is correct, and finish
 
-9. If everything is successful, you should see a message saying so. Stay on this screen and let's copy the information into our app's code we'll need...
+9. If everything is successful, you should see a message saying so. Stay on this screen
 
 #### Copying App Center Data
 
-1. Open /app.js
+1. Open app.js file in the root folder
 
-2. Copy the values from the App Center Hello World Summary Screen into this section of code in app.js
+2. Copy the values from the App Center into this section of code in app.js
 
 <code>
 <pre>
@@ -147,27 +136,7 @@ Now that you have updated your configurations to point to the appropriate ExactT
 
 3. While viewing the Journey Builder Dashboard, we should be able to select "Trigger Administration" and see our new trigger in the list
 
-
-#### Creating our Custom Trigger in Journey Builder
-1. Create a new Interaction
-
-2. Click to "Edit Trigger"
-
-3. Select "Hello World" or whatever you named it from the list (look at for the "new" banner)
-
-4. On the "Configure" step, enter a value you want to test for equality
-
-5. Save it (you'll get a warning, this is a known bug being fixed).
-
-6. Click to edit the Trigger again
-
-7. Click the "Configure" tab, and wait for the value to load
-
-8. Click next and save
-
-9. The Trigger is configured
-
-#### Creating our Custom Activity
+#### Creating our Custom Activity in Journey Builder
 1. Drag the "Hello World" activity from the list onto the Interaction Canvas
 
 2. Hover and click the "Configure" button
