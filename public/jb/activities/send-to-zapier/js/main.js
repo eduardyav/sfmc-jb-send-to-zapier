@@ -5,7 +5,7 @@ requirejs.config({
     },
     shim: {
 		'sendToZapier': {
-			deps: ['vendor/jquery.min', 'vendor/postmonger']
+			deps: ['vendor/postmonger']
 		}
     }
 });

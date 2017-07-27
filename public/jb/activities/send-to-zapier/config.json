@@ -9,8 +9,8 @@
     "type": "REST",
     "lang": {
         "en-US": {
-            "name": "Send To Zapier (API v1.1)",
-            "description": "A custom Journey Builder activity for sending contact's data to Zapier endpoint"
+            "name": "Send To Zapier",
+            "description": "A custom Journey Builder activity for sending contact's data to a Zapier endpoint (API v1.1)"
         }
     },
     "arguments": {
