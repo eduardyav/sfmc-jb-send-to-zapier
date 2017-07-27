@@ -31,6 +31,9 @@ define( function( require ) {
 
     // Helper functions
     function onRender() {
+        
+        console.log('onRender');
+        
         // JB will respond the first time 'ready' is called with 'initActivity'
         connection.trigger('ready');
         
@@ -42,6 +45,9 @@ define( function( require ) {
     };
     
     function initialize (data) {
+        
+        console.log('initialize');
+        
         if (data) {
             toJbPayload = data;
             console.log('Initialize payload: ', toJbPayload);
@@ -51,6 +57,9 @@ define( function( require ) {
     // Parameter is either the tokens data or an object with an
 	// "error" property containing the error message
     function onGetTokens (data) {
+        
+        console.log('onGetTokens');
+        
 		if( data.error ) {
 			console.error( data.error );
 		} else {
@@ -62,6 +71,9 @@ define( function( require ) {
     // Parameter is either the endpoints data or an object with an
 	// "error" property containing the error message    
     function onGetEndpoints (data) {
+        
+        console.log('onGetEndpoints');
+        
 		if( data.error ) {
 			console.error( data.error );
 		} else {
@@ -70,7 +82,10 @@ define( function( require ) {
 		}
 	}
     
-    function onGetInteractionDefaults(settings) { 
+    function onGetInteractionDefaults(settings) {
+        
+        onsole.log('onGetInteractionDefaults');
+        
         if( settings.error ) {
 			console.error( settings.error );
 		} else {
@@ -81,12 +96,18 @@ define( function( require ) {
     }
     
     function onClickedNext() {
+        
+        onsole.log('onClickedNext');
+        
         save();
         connection.trigger('ready');
     }
     
     function onUpdateActivity (payload) {
-            console.log('Updated payload: ', JSON.stringify(payload));
+        
+        onsole.log('onUpdateActivity');
+        
+        console.log('Updated payload: ', JSON.stringify(payload));
     }
     
     function save() {
