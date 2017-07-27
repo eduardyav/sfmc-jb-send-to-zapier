@@ -4,16 +4,13 @@ requirejs.config({
 		postmonger: 'vendor/postmonger'
     },
     shim: {
-        'vendor/jquery.min': {
-            exports: '$'
-        },
 		'sendToZapier': {
 			deps: ['vendor/jquery.min', 'vendor/postmonger']
 		}
     }
 });
 
-requirejs( ['vendor/jquery.min', 'sendToZapier'], function( $, sendToZapier ) {
+requirejs( ['sendToZapier'], function( sendToZapier ) {
 	//console.log( 'REQUIRE LOADED' );
 });
 

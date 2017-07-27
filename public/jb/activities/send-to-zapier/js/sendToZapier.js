@@ -1,16 +1,19 @@
 define( function( require ) {
 	var Postmonger = require( 'postmonger' );
-	var $ = require( 'vendor/jquery.min' );
     var connection = new Postmonger.Session();
     var toJbPayload = {};
 	var tokens;
 	var endpoints;
     var eventDefinitionKey;
-    
-    $(window).ready(onRender);
+
+    if ( document.readyState === "complete" ||
+        ( document.readyState !== "loading" && !document.documentElement.doScroll ) ) {
+        window.setTimeout(onRender);
+    } else {
+        document.addEventListener( "DOMContentLoaded", onRender );
+    }
     
     function onRender() {
-        //console.log('onRender');
         connection.trigger('ready');
         connection.trigger('requestTokens');
         connection.trigger('requestEndpoints');
