@@ -13,74 +13,93 @@ define( function( require ) {
         document.addEventListener( "DOMContentLoaded", onRender );
     }
     
+    // Event handlers
+    
+    connection.on('initActivity', initialize);
+    
+    // This listens for Journey Builder to send tokens
+    connection.on('requestedTokens', onGetTokens);
+    
+    // This listens for Journey Builder to send endpoints
+    connection.on('requestedEndpoints', onGetEndpoints);
+    
+    connection.on('requestedInteractionDefaults', onGetInteractionDefaults);
+    
+    connection.on('clickedNext', onClickedNext);
+    
+    connection.on('updateActivity', onUpdateActivity);
+
+    // Helper functions
     function onRender() {
+        // JB will respond the first time 'ready' is called with 'initActivity'
         connection.trigger('ready');
+        
         connection.trigger('requestTokens');
         connection.trigger('requestEndpoints');
+        
+        // This event allows to get Interaction (Journey) details
         connection.trigger('requestInteractionDefaults');
     };
     
-    connection.on('initActivity', function(payload) {
-        if (payload) {
-            toJbPayload = payload;
-            console.log('payload', toJbPayload);
+    function initialize (data) {
+        if (data) {
+            toJbPayload = data;
+            console.log('Initialize payload: ', toJbPayload);
         }
-    });
-
-    connection.on('requestedInteractionDefaults', function(settings) { 
-        if( settings.error ) {
-			console.error( settings.error );
-		} else {
-			defaults = settings;
-		}
-        console.log('defaults', defaults);
-        eventDefinitionKey = retrieveKey(defaults.email[0]);
-        console.log('EventKey', eventDefinitionKey);
-    });
-    
-    // Assume that the string of the format 
-    // '{{Event.ContactEvent-72af1529-1d7d-821e-2a08-34fb5068561d."EmailAddress"}}'
-    // It will return 'ContactEvent-72af1529-1d7d-821e-2a08-34fb5068561d'
-    // Otherwise null
-    function retrieveKey (string) {
-        var pos1 = string.indexOf(".");
-        var pos2 = string.indexOf(".", (pos1 + 1) );
-        var result = string.substring( (pos1 + 1) , pos2);
-        return result;
     }
     
-	// This listens for Journey Builder to send tokens
-	// Parameter is either the tokens data or an object with an
+    // Parameter is either the tokens data or an object with an
 	// "error" property containing the error message
-    connection.on('requestedTokens', function( data ) {
+    function onGetTokens (data) {
 		if( data.error ) {
 			console.error( data.error );
 		} else {
 			tokens = data;
+            console.log('Tokens: ', tokens);
 		}
-        console.log('tokens', tokens);
-	});
+	}
     
-	// This listens for Journey Builder to send endpoints
-	// Parameter is either the endpoints data or an object with an
-	// "error" property containing the error message
-	connection.on('requestedEndpoints', function( data ) {
+    // Parameter is either the endpoints data or an object with an
+	// "error" property containing the error message    
+    function onGetEndpoints (data) {
 		if( data.error ) {
 			console.error( data.error );
 		} else {
 			endpoints = data;
+            console.log('Endpoints: ', endpoints);
 		}
-        console.log('endpoints', endpoints);
-	});
-
-    connection.on('clickedNext', function() {
+	}
+    
+    function onGetInteractionDefaults(settings) { 
+        if( settings.error ) {
+			console.error( settings.error );
+		} else {
+			defaults = settings;
+            eventDefinitionKey = retrieveKey(defaults.email[0]);
+            console.log('EventKey', eventDefinitionKey);
+        }
+    }
+    
+    function onClickedNext() {
         save();
         connection.trigger('ready');
-    });
+    }
+    
+    function onUpdateActivity (payload) {
+            console.log('Updated payload: ', JSON.stringify(payload));
+    }
     
     function save() {
+        
+        // 'toJbPayload' is initialized on 'initActivity' above.
+        // Journey Builder sends an initial payload with defaults
+        // set by this activity's config.json file.  Any property
+        // may be overridden as desired.
+        
+        
         toJbPayload.metaData.isConfigured = true;
         
+        // Add in arguments to the payload
         toJbPayload['arguments'].execute.inArguments = [
             { 'FirstName': '{{Event.' + eventDefinitionKey + '.\"FirstName\"}}' },
             { 'LastName': '{{Event.' + eventDefinitionKey + '.\"LastName\"}}' },
@@ -89,13 +108,21 @@ define( function( require ) {
             { 'Phone': '{{Event.' + eventDefinitionKey + '.\"Phone\"}}' },
         ];
         
-        console.log(JSON.stringify(toJbPayload));
-        
         connection.trigger('updateActivity', toJbPayload);
-    };
+    }
     
-    connection.on('updateActivity', function(payload) {
-            console.log('updated payload', payload);
-    });
+    // Assume that the string of the format '{{Event.ContactEvent-72af1529-1d7d-821e-2a08-34fb5068561d."EmailAddress"}}'
+    // It will return 'ContactEvent-72af1529-1d7d-821e-2a08-34fb5068561d', otherwise return null
+    function retrieveKey (string) {
+        var pos1 = string.indexOf(".");
+        var pos2 = string.indexOf(".", (pos1 + 1) );
+        var result;
+        if ( (pos1 < 0) && (pos2 < 0) ){
+            result = null;
+        } else {
+            result = string.substring( (pos1 + 1) , pos2);
+        }
+        return result;
+    }
 
 });
