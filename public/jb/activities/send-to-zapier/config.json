@@ -9,8 +9,8 @@
     "type": "REST",
     "lang": {
         "en-US": {
-            "name": "Send To Zapier",
-            "description": "A custom Journey Builder activity for sending contact's data to Zapier endpoint. Version 1.0"
+            "name": "Send To Zapier (API v1.1)",
+            "description": "A custom Journey Builder activity for sending contact's data to Zapier endpoint"
         }
     },
     "arguments": {
@@ -53,16 +53,17 @@
             "useJwt": false
         }
     },
-    "edit": {
-        "url": "https://zapier-jb-test.herokuapp.com/jb/activities/send-to-zapier",
-        "height": 400,
-        "width": 500
-    },
     "userInterfaces": {
         "configModal": {
             "height": 200,
             "width": 300,
             "fullscreen": false
+        },
+        "runningModal": {
+            "url": "runningModal.html"
+        },
+        "runningHover": {
+            "url": "runningHover.html"
         }
     }
 }
