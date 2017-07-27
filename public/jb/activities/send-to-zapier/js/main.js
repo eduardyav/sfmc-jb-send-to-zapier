@@ -4,13 +4,16 @@ requirejs.config({
 		postmonger: 'vendor/postmonger'
     },
     shim: {
+        'vendor/jquery.min': {
+            exports: '$'
+        },
 		'sendToZapier': {
-			deps: ['vendor/postmonger']
+			deps: ['vendor/jquery.min', 'vendor/postmonger']
 		}
     }
 });
 
-requirejs( ['sendToZapier'], function( sendToZapier ) {
+requirejs( ['vendor/jquery.min', 'sendToZapier'], function( $, sendToZapier ) {
 	//console.log( 'REQUIRE LOADED' );
 });
 
@@ -19,5 +22,6 @@ requirejs.onError = function( err ) {
 	if( err.requireType === 'timeout' ) {
 		console.log( 'modules: ' + err.requireModules );
 	}
+
 	throw err;
 };

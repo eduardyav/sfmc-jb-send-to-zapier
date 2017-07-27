@@ -1,14 +1,16 @@
 define( function( require ) {
 	var Postmonger = require( 'postmonger' );
+	var $ = require( 'vendor/jquery.min' );
     var connection = new Postmonger.Session();
     var toJbPayload = {};
 	var tokens;
 	var endpoints;
     var eventDefinitionKey;
     
-    document.addEventListener('DOMContentLoaded', onRender);
+    $(window).ready(onRender);
     
     function onRender() {
+        //console.log('onRender');
         connection.trigger('ready');
         connection.trigger('requestTokens');
         connection.trigger('requestEndpoints');
