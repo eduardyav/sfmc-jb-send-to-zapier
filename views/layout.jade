@@ -12,10 +12,8 @@ html.no-js
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     title= pageTitle
-    meta(name='description', content='Validates ExactTarget Journey Builder config.js files for Custom Activities and Custom Triggers')
+    meta(name='description', content='Validates SFMC Journey Builder config.json files for Custom Activity')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    link(rel='stylesheet', href='stylesheets/normalize-css/normalize.css')
-    link(rel='stylesheet', href='/stylesheets/style.css')
   body!= body
     //if lt IE 7
       p.browsehappy
@@ -30,10 +28,6 @@ html.no-js
             if errorMessage
                 strong= errorMessage
             else
-                strong ExactTarget Journey Builder Custom Trigger and Custom Activity Example 
+                strong SFMC Journey Builder Custom Activity 
         hr
         block content
-
-    script.
-      window.jQuery || document.write('<script src="javascripts/jquery/jquery.min.js"><\/script>')
-    script(src='javascripts/script.js')
