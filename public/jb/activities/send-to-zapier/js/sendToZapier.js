@@ -6,7 +6,7 @@ define( function( require ) {
 	var endpoints;
     var eventDefinitionKey;
     
-    window.addEventListener('DOMContentLoaded', onRender);
+    document.addEventListener('DOMContentLoaded', onRender);
     
     function onRender() {
         connection.trigger('ready');
