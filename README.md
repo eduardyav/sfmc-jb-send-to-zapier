@@ -1,8 +1,6 @@
 # SFMC Journey Builder
 ## Custom Activity - Send To Zapier
 
-**NOTE:** You will not be able to run this locally. It is intended to be ran on a publicly available web server/cloud only.
-
 ### Pre-Requisites
 
 * A Salesforce Marketing Cloud account
