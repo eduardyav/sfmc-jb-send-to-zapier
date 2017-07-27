@@ -8,7 +8,7 @@ var path        = require('path');
 var request     = require('request');
 var routes      = require('./routes');
 var activity    = require('./routes/activity');
-var config      = require('./config/config');
+var config      = require('./config/config.json');
 var app = express();
 
 // Register configs for the environments where the app functions
