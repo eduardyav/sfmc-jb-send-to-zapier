@@ -84,7 +84,7 @@ define( function( require ) {
     
     function onGetInteractionDefaults(settings) {
         
-        onsole.log('onGetInteractionDefaults');
+        console.log('onGetInteractionDefaults');
         
         if( settings.error ) {
 			console.error( settings.error );
