@@ -20,8 +20,6 @@ var APIKeys = {
     authUrl         : config.authUrl
 };
 
-console.log('APIKeys: ', JSON.stringify(APIKeys))
-
 // Simple custom middleware
 function tokenFromJWT( req, res, next ) {
     // Setup the signature for decoding the JWT

@@ -23,14 +23,14 @@
 5. Select "Package" as the template type and use the following properties:
     
     * Category: HubExchange
-    * Name: <YOUR_APP_NAME>
-    * Description: <DESCRIBE_WHAT_APP_IS_DOING>
+    * Name: &lt;YOUR_APP_NAME&gt;
+    * Description: &lt;DESCRIBE_WHAT_APP_IS_DOING&gt;
     * Package: &lt;THIS MUST BE UNIQUE ACROSS ALL OF SFMC&gt
 
     * Application Endpoints: The base is your publicly accessible web server's endpoint for this app, this can be updated later, MUST BE OVER SSL
-        * Login URL: <YOUR_APP_ENDPOINT>/login
-        * Logout URL: <YOUR_APP_ENDPOINT>/logout
-        * Redirect URL: <YOUR_APP_ENDPOINT>/
+        * Login URL: &lt;YOUR_APP_ENDPOINT>/login
+        * Logout URL: &lt;YOUR_APP_ENDPOINT>/logout
+        * Redirect URL: &lt;YOUR_APP_ENDPOINT>/
 
 6. Integrate your app with an Account (Business Unit)
 
@@ -42,123 +42,82 @@
 
 #### Copying App Center Data
 
-1. Open app.js file in the root folder
+1. Open config.js file in the 'config' folder
 
-2. Copy the values from the App Center into this section of code in app.js
+2. Copy the values from the App Center into this file
 
 <code>
-<pre>
-    var APIKeys = {
-        appId           : '__insert_your_app_id__',
-        clientId        : '__insert_your_app_client_id__',
-        clientSecret    : '__insert_your_app_client_secret__',
-        appSignature    : '__insert_your_app_signature__',
-        authUrl         : 'https://auth.exacttargetapis.com/v1/requestToken?legacy=1'
-    };
-</pre>
+    <pre>
+         {
+            appId           : '__insert_your_app_id__',
+            clientId        : '__insert_your_app_client_id__',
+            clientSecret    : '__insert_your_app_client_secret__',
+            appSignature    : '__insert_your_app_signature__',
+            authUrl         : 'https://auth.exacttargetapis.com/v1/requestToken?legacy=1'
+        };
+    </pre>
 </code>
 
 #### Web Server
 
-1. At this point we're going to need the endpoint for our app and subsequently each app extension
-
-2. If you're using Heroku, create a new app and copy the endpoint.
-
-#### Defining our Trigger App Extension
-1. In App Center on Code@, with your newly created app open, scroll to the bottom of the page
-
-2. Click "Create a new Interaction Studio Trigger" (we'll be renaming this soon)
-
-3. Properties:
-    * Name: Hello World
-    * Key: jb-hello-world-trigger-yourname (Replace yourname with your first and last name, if I am John Smith: johnsmith. This ensures your key is unique)
-    * Description: Hello World Trigger
-    * Endpoint URL: https://&lt;webserver-endpoint&gt;/ixn/triggers/hello-world (no trailing slash)
-    * Help URL: https://&lt;webserver-endpoint&gt;/ixn/triggers/hello-world/help (no trailing slash)
-    * Help Description: Hello World Trigger Help
-    * Category: Trigger
-    * Public Extension: This application and all other installed applications
-    * Upload Icon: Choose the icon in: /public/ixn/triggers/hello-world/images/
-
-4. Save
-
-#### Updating the code to reflect our new Custom Trigger
-1. Open /public/ixn/triggers/hello-world/config.json
-
-2. Copy the "Key" property from your App Extension Custom Trigger and paste it into config.json.key value
-
-3. Open /app.js
-
-4. In the fireEvent handler, insert the name of your Trigger's key in place of the value for: triggerIdFromAppExtensionInAppCenter 
-
-5. **NOTE: Step 5 IS NOT required, except in cases where the Custom Trigger DE has been associated to the Contact Model and the "Advanced" development flow of implementing Contact Filter Criteria is needed** There is a filter definition XML which requires setup and custom values in [this custom trigger JS file](https://github.com/ExactTarget/journey-builder-custom-hello-world/blob/master/public/ixn/triggers/hello-world/js/helloWorldTrigger.js). What you see inside there now needs updating, please read [MyEvent.js Filter XML property](https://code.exacttarget.com/marketing-automation/journey-builder/interactions/triggers/custom-triggers) section on Code@ for more information about this piece of your custom trigger.
+1. Make sure that your server endpoint for our app is up and running
 
 #### Defining our Activity App Extension
-1. In App Center on Code@, with your newly created app open, scroll to the bottom of the page
+1. In App Center, with your newly created app open, go to the 'Journey Builder Activity' tab
 
-2. Click "Create a new Interaction Studio Activity" (we'll be renaming this soon)
+2. Click "Create Journey Builder Activity"
 
 3. Properties:
-    * Name: Hello World Activity
-    * Key: jb-hello-world-activity-yourname (Replace yourname with your first and last name, if I am John Smith: johnsmith. This ensures your key is unique)
-    * Description: Hello World Activity
-    * Endpoint URL: https://&lt;webserver-endpoint&gt;/ixn/activities/hello-world (no trailing slash)
-    * Help URL: https://&lt;webserver-endpoint&gt;/ixn/activities/hello-world/help (no trailing slash)
-    * Help Description: Hello World Trigger Help
-    * Category: Message
+    * Name: &lt;YOUR_CUSTOM_ACIVITY_NAME&gt;
+    * Key: &lt;ANY UNIQUE KEY OR GUID&gt;
+    * Description: &lt;YOUR_DESCRIPTION&gt;
+    * Endpoint URL: https://&lt;webserver-endpoint&gt;/jb/activities/send-to-zapier (no trailing slash)
+    * Help URL: https://&lt;webserver-endpoint&gt;/jb/activities/send-to-zapier/help (no trailing slash)
+    * Help Description: &lt;YOUR_DESCRIPTION&gt;
+    * Category: Messaging
     * Public Extension: This application and all other installed applications
-    * Upload Icon: Choose the icon in: /public/ixn/activities/hello-world/images/
+
+**NOTE:** These properties may be overwritten by the config.json file in /jb/activities/send-to-zapier
 
 4. Save
 
 #### Updating the code to reflect our new App Extensions
-1. Open /public/ixn/activities/hello-world/config.js
+1. Open /jb/activities/send-to-zapier/config.json
 
-2. Copy the "Key" property from your App Extension Custom Activity and paste it into config.js.key value
+2. Copy the "Key" property from your App Extension Custom Activity and paste it into the "applicationExtensionKey" value
 
-3. Replace the "__insert_your_custom_activity_endpoint__" with your web server's endpoint throughout the file.
+3. Replace the "__insert_your_custom_activity_endpoint__" with your web server's endpoint throughout the file. For example, "https://__insert_your_custom_activity_endpoint__/execute/" would become "https://zapier-jb-test.herokuapp.com/jb/activities/send-to-zapier/execute/"
 
 #### Re-deploy application to host
-Now that you have updated your configurations to point to the appropriate ExactTarget resources, push your changes.
-
+Now that you have updated your configurations to point to the appropriate SFMC resources, push your changes.
 
 #### Testing our app loads in the Marketing Cloud
-1. Log into the [Marketing Cloud](https://mc.exacttarget.com/cloud)
+1. Log into the [Salesforce Marketing Cloud](https://mc.exacttarget.com/cloud)
 
-2. From the App Switcher, choose "Hello World"
+2. Go to Journey Builder and create a new journey or open existing one that is in Draft status
 
-3. We should see the Hello World HubExchange app interface
+3. You should see app icon in the acivities canvas
 
-#### Defining our Custom Trigger in Trigger Admin
-1. Log into the [Marketing Cloud](https://mc.exacttarget.com/cloud)
-
-2. Choose Marketing Automation -> Journey Builder
-
-3. While viewing the Journey Builder Dashboard, we should be able to select "Trigger Administration" and see our new trigger in the list
-
-#### Creating our Custom Activity in Journey Builder
-1. Drag the "Hello World" activity from the list onto the Interaction Canvas
+#### Configuring Custom Activity in Journey Builder
+1. Drag your custom activity from the list onto the Interaction Canvas
 
 2. Hover and click the "Configure" button
 
-3. The Hello World Activity dialog should appear (this is loading from your app)
+3. The Custom Activity dialog should appear (this is loading from your app)
 
 4. Click save
 
-5. The Activity is configured.
+5. The Activity is now configured.
 
-#### Testing our Custom Interaction
-1. Select "Hello World" from the App Switcher on the Marketing Cloud
+#### Testing an Interaction with Custom Activity
+1. Create a new journey
 
-2. Enter an email that exists in your subscriber list
+2. Drag event on the canvas and configure it
 
-3. Enter the exact value as you entered in Creating our Custom Trigger in Journey Builder, step 4
+3. Drag your custom activity on the canvas and configure it
 
-4. Click "Fire the Event"
+4. Save and activate the journey
 
-5. Events will come through the wire and post to the "Event List"
+5. Fire the event
 
-6. Click the "Get Latest Results" button and you should see the latest responses which have reached the "Activity"
-
-## Licensing
- Please see the "LICENSE" file in the root of this repository for information related to licensing of this repository.
+6. Check that your custom activity works
