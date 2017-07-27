@@ -15,10 +15,8 @@
     },
     "arguments": {
         "execute": {
-            "inArguments": [
-            ],
-            "outArguments": [
-            ],
+            "inArguments": [],
+            "outArguments": [],
             "url": "https://zapier-jb-test.herokuapp.com/jb/activities/send-to-zapier/execute/",
             "verb": "POST",
             "body": "",
@@ -32,22 +30,22 @@
        "applicationExtensionKey": "D4F3B97E-1E12-405E-A9EC170BB6F94A46",
        "defaults": { 
             "method": "POST",
-            "format": "JSON" 
+            "format": "json" 
+        },
+        "validate": {
+            "url": "https://zapier-jb-test.herokuapp.com/jb/activities/send-to-zapier/validate/",
+            "body": "",
+            "verb": "POST",
+            "useJwt": false
         },
         "save": {
             "url": "https://zapier-jb-test.herokuapp.com/jb/activities/send-to-zapier/save/",
-            "body": "",
             "verb": "POST",
+            "body": "",
             "useJwt": false
         },
         "publish": {
            "url": "https://zapier-jb-test.herokuapp.com/jb/activities/send-to-zapier/publish/",
-            "body": "",
-            "verb": "POST",
-            "useJwt": false
-        },
-        "validate": {
-            "url": "https://zapier-jb-test.herokuapp.com/jb/activities/send-to-zapier/validate/",
             "body": "",
             "verb": "POST",
             "useJwt": false
