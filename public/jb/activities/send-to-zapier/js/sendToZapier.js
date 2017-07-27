@@ -26,8 +26,6 @@ define( function( require ) {
     connection.on('requestedInteractionDefaults', onGetInteractionDefaults);
     
     connection.on('clickedNext', onClickedNext);
-    
-    connection.on('updateActivity', onUpdateActivity);
 
     // Helper functions
     function onRender() {
@@ -103,13 +101,6 @@ define( function( require ) {
         connection.trigger('ready');
     }
     
-    function onUpdateActivity (payload) {
-        
-        console.log('onUpdateActivity');
-        
-        console.log('Updated payload: ', JSON.stringify(payload));
-    }
-    
     function save() {
         
         // 'toJbPayload' is initialized on 'initActivity' above.
@@ -128,6 +119,8 @@ define( function( require ) {
             { 'ID': '{{Event.' + eventDefinitionKey + '.\"ID\"}}' },
             { 'Phone': '{{Event.' + eventDefinitionKey + '.\"Phone\"}}' },
         ];
+        
+        console.log('Updated payload: ', toJbPayload);
         
         connection.trigger('updateActivity', toJbPayload);
     }
